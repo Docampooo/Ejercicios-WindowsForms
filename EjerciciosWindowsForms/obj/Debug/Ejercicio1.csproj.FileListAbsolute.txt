@@ -1,0 +1,11 @@
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\bin\Debug\EjerciciosWindowsForms.exe.config
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\bin\Debug\EjerciciosWindowsForms.exe
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\bin\Debug\EjerciciosWindowsForms.pdb
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\Ejercicio1.csproj.AssemblyReference.cache
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\EjerciciosWindowsForms.exe.config
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\EjerciciosWindowsForms.MouseTester.resources
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\EjerciciosWindowsForms.Properties.Resources.resources
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\Ejercicio1.csproj.GenerateResource.cache
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\Ejercicio1.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\EjerciciosWindowsForms.exe
+C:\Users\Usuario\source\repos\EjerciciosWindowsForms\EjerciciosWindowsForms\obj\Debug\EjerciciosWindowsForms.pdb
