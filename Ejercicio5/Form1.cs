@@ -94,6 +94,7 @@ namespace Ejercicio5
                         while (linea != null)
                         {
                             numeros.Add(linea);
+                            linea = sr.ReadLine();
                         }
                     }
 
@@ -152,16 +153,22 @@ namespace Ejercicio5
             }
         }
 
+        bool salir = false;
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Quieres salir del programa?", "Salir del programa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+
+            if (!salir)
             {
-                e.Cancel = true;
+                if (MessageBox.Show("Quieres salir del programa?", "Salir del programa", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.Cancel)
+                {
+                    e.Cancel = true;
+                }
             }
         }
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            salir = true;
             this.Close();
         }
 
@@ -178,13 +185,13 @@ namespace Ejercicio5
             f2.txtSecunNum.Text = txtMovil.Text;
             f2.txtSecunNum.ReadOnly = true;
 
-            f2.btnAñadir.Click += añadirNumero;
+            f2.btnAñadir.Click += añadirNumero;//esyo
             f2.ShowDialog();
         }
 
         private void añadirNumero(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(f2.txtNombre.Text))//cambiar esto
+            if (string.IsNullOrEmpty(f2.txtNombre.Text))
             {
                 MessageBox.Show("El textBox del nombre ha de ser rellenado para guardar el numero de telefono", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -201,14 +208,18 @@ namespace Ejercicio5
                         if (string.IsNullOrEmpty(f2.txtNombre.Text) || string.IsNullOrEmpty(f2.txtSecunNum.Text))
                         {
                             f2.Hide();
-                            MessageBox.Show("Se necesita tanto numero como nombre para guardar el numero de telefono", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Se necesita tanto el numero como el nombre para guardar el numero de telefono", "Error en los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
                         else
                         {
                             string ln = $"{f2.txtNombre.Text}:{f2.txtSecunNum.Text}";
+                            MessageBox.Show(ln, "datos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
                             numeros.Add(ln);
                             sw.WriteLine(ln);
+                            f2.Close();
                         }
 
                     }
@@ -231,8 +242,12 @@ namespace Ejercicio5
             {
                 for (int i = 0; i < numeros.Count(); i++)
                 {
-                    string[] di = nm.txtAgenda.Text.Split(':');
-                    nm.txtAgenda.Text += $"{di[0],10}\t{di[1],10}";
+                    string[] di = numeros[i].Split(':');
+
+                    if (di.Length == 2)
+                    {
+                        nm.txtAgenda.AppendText($"{Environment.NewLine}{di[0],10}\t\t{di[1],10}");
+                    }
                 }
                 nm.Show();
             }
@@ -240,6 +255,11 @@ namespace Ejercicio5
             {
                 MessageBox.Show("No hay numeros en la coleccion", "Falta de numeros", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            btnResest.PerformClick();
         }
     }
 }

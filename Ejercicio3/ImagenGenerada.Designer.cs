@@ -29,31 +29,35 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ImagenGenerada));
             this.imagenFondo = new System.Windows.Forms.PictureBox();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuContextual = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ajustarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.noDeformarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.imagenFondo)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
+            this.menuContextual.SuspendLayout();
             this.SuspendLayout();
             // 
             // imagenFondo
             // 
-            this.imagenFondo.Location = new System.Drawing.Point(43, 29);
+            this.imagenFondo.ContextMenuStrip = this.menuContextual;
+            this.imagenFondo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imagenFondo.Location = new System.Drawing.Point(0, 0);
             this.imagenFondo.Name = "imagenFondo";
-            this.imagenFondo.Size = new System.Drawing.Size(693, 397);
+            this.imagenFondo.Size = new System.Drawing.Size(800, 450);
             this.imagenFondo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imagenFondo.TabIndex = 0;
             this.imagenFondo.TabStop = false;
             // 
-            // contextMenuStrip1
+            // menuContextual
             // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuContextual.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuContextual.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ajustarToolStripMenuItem,
             this.noDeformarToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(165, 52);
+            this.menuContextual.Name = "contextMenuStrip1";
+            this.menuContextual.Size = new System.Drawing.Size(165, 52);
+            this.menuContextual.Opening += new System.ComponentModel.CancelEventHandler(this.menuContextual_Opening);
             // 
             // ajustarToolStripMenuItem
             // 
@@ -75,10 +79,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.imagenFondo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ImagenGenerada";
             this.Text = "ImagenGenerada";
             ((System.ComponentModel.ISupportInitialize)(this.imagenFondo)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuContextual.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -86,7 +91,7 @@
         #endregion
 
         public System.Windows.Forms.PictureBox imagenFondo;
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ContextMenuStrip menuContextual;
         private System.Windows.Forms.ToolStripMenuItem ajustarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem noDeformarToolStripMenuItem;
     }

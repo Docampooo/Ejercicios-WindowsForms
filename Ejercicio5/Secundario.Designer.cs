@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Secundario));
             this.btnAñadir = new System.Windows.Forms.Button();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.txtSecunNum = new System.Windows.Forms.TextBox();
@@ -42,7 +43,7 @@
             this.btnAñadir.Location = new System.Drawing.Point(162, 257);
             this.btnAñadir.Name = "btnAñadir";
             this.btnAñadir.Size = new System.Drawing.Size(119, 49);
-            this.btnAñadir.TabIndex = 0;
+            this.btnAñadir.TabIndex = 2;
             this.btnAñadir.Text = "Añadir";
             this.btnAñadir.UseVisualStyleBackColor = false;
             // 
@@ -53,7 +54,7 @@
             this.txtNombre.Location = new System.Drawing.Point(91, 209);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(100, 22);
-            this.txtNombre.TabIndex = 1;
+            this.txtNombre.TabIndex = 0;
             // 
             // txtSecunNum
             // 
@@ -63,7 +64,7 @@
             this.txtSecunNum.Name = "txtSecunNum";
             this.txtSecunNum.ReadOnly = true;
             this.txtSecunNum.Size = new System.Drawing.Size(100, 22);
-            this.txtSecunNum.TabIndex = 2;
+            this.txtSecunNum.TabIndex = 1;
             // 
             // lblNombre
             // 
@@ -87,7 +88,7 @@
             this.lblTelefono.TabIndex = 4;
             this.lblTelefono.Text = "Telefono";
             // 
-            // secundario
+            // Secundario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -99,8 +100,9 @@
             this.Controls.Add(this.txtSecunNum);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.btnAñadir);
-            this.Name = "secundario";
-            this.Text = "Form2";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Secundario";
+            this.Text = "AñadirTelefono";
             this.ResumeLayout(false);
             this.PerformLayout();
 

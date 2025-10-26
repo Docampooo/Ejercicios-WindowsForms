@@ -21,12 +21,19 @@ namespace Ejercicio3
 
         private void noDeformarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            imagenFondo.SizeMode = PictureBoxSizeMode.AutoSize;
+            imagenFondo.SizeMode = PictureBoxSizeMode.Zoom;
+           // this.Dock = DockStyle.None;
         }
 
         private void ajustarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             imagenFondo.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Dock = DockStyle.Fill;
+        }
+
+        private void menuContextual_Opening(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

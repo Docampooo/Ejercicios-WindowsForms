@@ -28,38 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NoModal));
             this.txtAgenda = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtAgenda
             // 
             this.txtAgenda.BackColor = System.Drawing.Color.Black;
+            this.txtAgenda.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtAgenda.ForeColor = System.Drawing.Color.White;
-            this.txtAgenda.Location = new System.Drawing.Point(271, 52);
+            this.txtAgenda.Location = new System.Drawing.Point(0, 0);
             this.txtAgenda.Multiline = true;
             this.txtAgenda.Name = "txtAgenda";
             this.txtAgenda.ReadOnly = true;
-            this.txtAgenda.Size = new System.Drawing.Size(222, 386);
+            this.txtAgenda.Size = new System.Drawing.Size(348, 450);
             this.txtAgenda.TabIndex = 0;
             this.txtAgenda.TextChanged += new System.EventHandler(this.txtAgenda_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(349, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Agenda!";
             // 
             // NoModal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(348, 450);
             this.Controls.Add(this.txtAgenda);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NoModal";
             this.Text = "NoModal";
             this.ResumeLayout(false);
@@ -70,6 +62,5 @@
         #endregion
 
         public System.Windows.Forms.TextBox txtAgenda;
-        public System.Windows.Forms.Label label1;
     }
 }

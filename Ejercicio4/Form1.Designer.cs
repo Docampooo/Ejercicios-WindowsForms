@@ -47,6 +47,7 @@
             this.tmrTitulo = new System.Windows.Forms.Timer(this.components);
             this.guardarElementos = new System.Windows.Forms.SaveFileDialog();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +60,7 @@
             this.lst1.MultiColumn = true;
             this.lst1.Name = "lst1";
             this.lst1.Size = new System.Drawing.Size(120, 84);
-            this.lst1.TabIndex = 0;
+            this.lst1.TabIndex = 2;
             // 
             // lst2
             // 
@@ -68,14 +69,15 @@
             this.lst2.Location = new System.Drawing.Point(490, 192);
             this.lst2.Name = "lst2";
             this.lst2.Size = new System.Drawing.Size(120, 84);
-            this.lst2.TabIndex = 1;
+            this.lst2.TabIndex = 3;
             // 
             // btnAñadir
             // 
-            this.btnAñadir.Location = new System.Drawing.Point(312, 313);
+            this.btnAñadir.AutoSize = true;
+            this.btnAñadir.Location = new System.Drawing.Point(277, 303);
             this.btnAñadir.Name = "btnAñadir";
-            this.btnAñadir.Size = new System.Drawing.Size(75, 23);
-            this.btnAñadir.TabIndex = 2;
+            this.btnAñadir.Size = new System.Drawing.Size(109, 33);
+            this.btnAñadir.TabIndex = 4;
             this.btnAñadir.Text = "Añadir";
             this.toolTip.SetToolTip(this.btnAñadir, "Agrega lo que contenga el textBox a la lista seleccionada");
             this.btnAñadir.UseVisualStyleBackColor = true;
@@ -83,10 +85,11 @@
             // 
             // btnTraspasar
             // 
-            this.btnTraspasar.Location = new System.Drawing.Point(541, 313);
+            this.btnTraspasar.AutoSize = true;
+            this.btnTraspasar.Location = new System.Drawing.Point(541, 303);
             this.btnTraspasar.Name = "btnTraspasar";
-            this.btnTraspasar.Size = new System.Drawing.Size(75, 23);
-            this.btnTraspasar.TabIndex = 3;
+            this.btnTraspasar.Size = new System.Drawing.Size(127, 33);
+            this.btnTraspasar.TabIndex = 6;
             this.btnTraspasar.Text = "Traspasar";
             this.toolTip.SetToolTip(this.btnTraspasar, "Traspasa el indice seleccionado de la lista seleccionada a la otra lista");
             this.btnTraspasar.UseVisualStyleBackColor = true;
@@ -94,10 +97,11 @@
             // 
             // btnQuitar
             // 
-            this.btnQuitar.Location = new System.Drawing.Point(432, 313);
+            this.btnQuitar.AutoSize = true;
+            this.btnQuitar.Location = new System.Drawing.Point(411, 303);
             this.btnQuitar.Name = "btnQuitar";
-            this.btnQuitar.Size = new System.Drawing.Size(75, 23);
-            this.btnQuitar.TabIndex = 4;
+            this.btnQuitar.Size = new System.Drawing.Size(111, 33);
+            this.btnQuitar.TabIndex = 5;
             this.btnQuitar.Text = "Quitar";
             this.toolTip.SetToolTip(this.btnQuitar, "Elimina de la lista seleccionada el indice seleccionado");
             this.btnQuitar.UseVisualStyleBackColor = true;
@@ -110,7 +114,7 @@
             this.rbLst1.Location = new System.Drawing.Point(13, 13);
             this.rbLst1.Name = "rbLst1";
             this.rbLst1.Size = new System.Drawing.Size(108, 20);
-            this.rbLst1.TabIndex = 6;
+            this.rbLst1.TabIndex = 0;
             this.rbLst1.TabStop = true;
             this.rbLst1.Text = "Marcar Lista1";
             this.rbLst1.UseVisualStyleBackColor = true;
@@ -122,7 +126,7 @@
             this.rbLst2.Location = new System.Drawing.Point(134, 13);
             this.rbLst2.Name = "rbLst2";
             this.rbLst2.Size = new System.Drawing.Size(108, 20);
-            this.rbLst2.TabIndex = 7;
+            this.rbLst2.TabIndex = 1;
             this.rbLst2.Text = "Marcar Lista2";
             this.rbLst2.UseVisualStyleBackColor = true;
             this.rbLst2.CheckedChanged += new System.EventHandler(this.rbSeleccionado);
@@ -134,7 +138,7 @@
             this.rbMover1.Location = new System.Drawing.Point(38, 13);
             this.rbMover1.Name = "rbMover1";
             this.rbMover1.Size = new System.Drawing.Size(63, 20);
-            this.rbMover1.TabIndex = 8;
+            this.rbMover1.TabIndex = 0;
             this.rbMover1.TabStop = true;
             this.rbMover1.Text = "1 --> 2";
             this.rbMover1.UseVisualStyleBackColor = true;
@@ -145,7 +149,7 @@
             this.rbMover2.Location = new System.Drawing.Point(155, 13);
             this.rbMover2.Name = "rbMover2";
             this.rbMover2.Size = new System.Drawing.Size(63, 20);
-            this.rbMover2.TabIndex = 9;
+            this.rbMover2.TabIndex = 1;
             this.rbMover2.Text = "1 <-- 2";
             this.rbMover2.UseVisualStyleBackColor = true;
             // 
@@ -155,7 +159,7 @@
             this.lblElementos.Location = new System.Drawing.Point(139, 169);
             this.lblElementos.Name = "lblElementos";
             this.lblElementos.Size = new System.Drawing.Size(148, 16);
-            this.lblElementos.TabIndex = 10;
+            this.lblElementos.TabIndex = 8;
             this.lblElementos.Text = "Elementos de la Lista 1:";
             // 
             // lblLista
@@ -164,7 +168,7 @@
             this.lblLista.Location = new System.Drawing.Point(139, 208);
             this.lblLista.Name = "lblLista";
             this.lblLista.Size = new System.Drawing.Size(108, 16);
-            this.lblLista.TabIndex = 11;
+            this.lblLista.TabIndex = 9;
             this.lblLista.Text = "elemento | indice";
             // 
             // txtAñadir
@@ -172,7 +176,7 @@
             this.txtAñadir.Location = new System.Drawing.Point(422, 372);
             this.txtAñadir.Name = "txtAñadir";
             this.txtAñadir.Size = new System.Drawing.Size(100, 22);
-            this.txtAñadir.TabIndex = 12;
+            this.txtAñadir.TabIndex = 7;
             // 
             // panel1
             // 
@@ -181,7 +185,7 @@
             this.panel1.Location = new System.Drawing.Point(335, 52);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(275, 42);
-            this.panel1.TabIndex = 13;
+            this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
@@ -190,12 +194,21 @@
             this.panel2.Location = new System.Drawing.Point(335, 113);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(275, 39);
-            this.panel2.TabIndex = 14;
+            this.panel2.TabIndex = 1;
             // 
             // tmrTitulo
             // 
             this.tmrTitulo.Interval = 200;
             this.tmrTitulo.Tick += new System.EventHandler(this.tmrTitulo_Tick);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 31);
+            this.toolStrip1.TabIndex = 10;
+            this.toolStrip1.Text = "toolStrip1";
             // 
             // Form1
             // 
@@ -204,6 +217,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.txtAñadir);
@@ -245,6 +259,7 @@
         private System.Windows.Forms.Timer tmrTitulo;
         private System.Windows.Forms.SaveFileDialog guardarElementos;
         private System.Windows.Forms.ToolTip toolTip;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }
 

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Ejercicio2
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form//TODO cierre de app con pregunta, acceptbutton bien . Label en componentes.
     {
 
         public int?[] confirmarRGB(string[] valores)
@@ -55,15 +55,7 @@ namespace Ejercicio2
         private void btnSalir_Click(object sender, EventArgs e)
         {
 
-            if (MessageBox.Show("Seguro que qieres salir del progrma?", "Salir de la aplicacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
-            {
-                Application.Exit();
-            }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
+            this.Close();
         }
 
         private void btnColor_Click(object sender, EventArgs e)
@@ -93,14 +85,9 @@ namespace Ejercicio2
             }
         }
 
-        private void ptBtnImagen_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnColor_Enter(object sender, EventArgs e)
         {
-            this.AcceptButton = btnColor;
+           // this.AcceptButton = btnColor;
         }
 
         private void focoBotones(object sender, EventArgs e)
@@ -112,7 +99,7 @@ namespace Ejercicio2
             {
                 this.AcceptButton = btnImagen;
             }
-            else if (txt == txtR || txt == txtG || txt == txtB)
+            else //if (txt == txtR || txt == txtG || txt == txtB)
             {
                 this.AcceptButton = btnColor;
             }
@@ -164,7 +151,7 @@ namespace Ejercicio2
 
         private void btnImagen_Click(object sender, EventArgs e)
         {
-            if (txtImagen.Text == null || txtImagen.Text == "")
+            if (txtImagen.Text == null || txtImagen.Text.Trim() == "")
             {
                 MessageBox.Show($"Introduce una ruta absoluta con la imagen en el textBox", "Error en la imagen", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -176,21 +163,18 @@ namespace Ejercicio2
                     ptbImagen.Image = new Bitmap(txtImagen.Text);
 
                 }
-                catch (Exception ex)
+                catch (Exception ex)//TODO no excepcion genérica
                 {
                     MessageBox.Show($"No se encuentra la imagen {txtImagen}", "Error en la imagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
-
-        private void ptbImagen_Click(object sender, EventArgs e)
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-
-        }
-
-        private void txtR_TextChanged(object sender, EventArgs e)
-        {
-
+            if (!(MessageBox.Show("Seguro que qieres salir del progrma?", "Salir de la aplicacion", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK))
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

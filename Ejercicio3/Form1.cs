@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ejercicio3
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form//TODO menu contextual en secundario
     {
         public Form1()
         {
@@ -26,33 +28,71 @@ namespace Ejercicio3
             OpenFileDialog ofd = new OpenFileDialog();
 
             ofd.Title = "Seleccion de directorio para imagenes";
-            ofd.InitialDirectory = "C:\\Users\\Usuario\\OneDrive\\Images\\Recursos\\Aspectos\\chacarron";
+            string rutaInicial = Environment.GetEnvironmentVariable("homepath");
+
+            try
+            {
+                ofd.InitialDirectory = rutaInicial + "\\OneDrive\\Images\\Recursos\\Aspectos\\chacarron";
+
+            }
+            catch (SecurityException)
+            {
+                MessageBox.Show("No hay permisos para esta carpeta", "Error de permisos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ofd.InitialDirectory = rutaInicial;
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Error en los caracteres de la cadena", "Error de parametros", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ofd.InitialDirectory = rutaInicial;
+            }
+            catch (IOException)
+            {
+                MessageBox.Show("Error al acceder al sistema de archivos", "Error de acceso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ofd.InitialDirectory = rutaInicial;
+            }
             ofd.ValidateNames = true;
             ofd.Multiselect = true;
             ofd.Filter = "Imagen PNG (*.png)|*.png|Imagen JPEG (*.jpeg)|*.jpeg|Todos los archivos(*.*)|*.*";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                string cad = ofd.FileName.Trim();
+
                 ImagenGenerada f2 = new ImagenGenerada();
 
-                if (chkModal.Checked)
+                try
                 {
-                    f2.ShowDialog();
+                    Image imagenSeleccionada = Image.FromFile(ofd.FileName);
+                    f2.imagenFondo.Image = imagenSeleccionada;
+
+                    string[] ruta = ofd.FileName.Split('.', '\\');
+                    string nomImagen = ruta[ruta.Length - 2];
+
+                    f2.Text = nomImagen;
+
+                    if (chkModal.Checked)
+                    {
+                        f2.ShowDialog();
+                    }
+                    else
+                    {
+                        f2.Show();
+                    }
                 }
-                else
+                catch (ArgumentException)
                 {
-                    f2.Show();
+                    MessageBox.Show("Solo se admiten imagenes en este campo", "Error en el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (OutOfMemoryException)
+                {
+                    MessageBox.Show("Solo se admiten imagenes en este campo", "Error en el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (FileNotFoundException)
+                {
+                    MessageBox.Show("Solo se admiten imagenes en este campo", "Error en el archivo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
-                Image imagenSeleccionada = Image.FromFile(ofd.FileName);
-                f2.imagenFondo.Image = imagenSeleccionada;
-
-                string[] ruta = ofd.FileName.Split('.','\\');
-                string nomImagen = ruta[ruta.Length -2];
-
-                f2.Text = nomImagen;
             }
-            
         }
 
         private void chkModal_CheckedChanged(object sender, EventArgs e)
@@ -77,7 +117,7 @@ namespace Ejercicio3
         private void tmr_Tick(object sender, EventArgs e)
         {
             contSeg++;
-            if(contSeg % 60 == 0)
+            if (contSeg % 60 == 0)
             {
                 contMin++;
                 contSeg = 0;

@@ -50,7 +50,7 @@
             this.txtMovil.Location = new System.Drawing.Point(135, 488);
             this.txtMovil.Name = "txtMovil";
             this.txtMovil.Size = new System.Drawing.Size(147, 22);
-            this.txtMovil.TabIndex = 12;
+            this.txtMovil.TabIndex = 0;
             // 
             // pantalla
             // 
@@ -106,6 +106,7 @@
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
             this.resetToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.resetToolStripMenuItem.Text = "Reset";
+            this.resetToolStripMenuItem.Click += new System.EventHandler(this.resetToolStripMenuItem_Click);
             // 
             // separadorToolStripMenuItem
             // 

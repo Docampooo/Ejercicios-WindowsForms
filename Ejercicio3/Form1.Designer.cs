@@ -40,7 +40,7 @@
             this.btnImagen.Location = new System.Drawing.Point(376, 252);
             this.btnImagen.Name = "btnImagen";
             this.btnImagen.Size = new System.Drawing.Size(149, 45);
-            this.btnImagen.TabIndex = 0;
+            this.btnImagen.TabIndex = 1;
             this.btnImagen.Text = "Nueva Imagen";
             this.btnImagen.UseVisualStyleBackColor = true;
             this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
@@ -51,7 +51,7 @@
             this.chkModal.Location = new System.Drawing.Point(398, 191);
             this.chkModal.Name = "chkModal";
             this.chkModal.Size = new System.Drawing.Size(67, 20);
-            this.chkModal.TabIndex = 1;
+            this.chkModal.TabIndex = 0;
             this.chkModal.Text = "Modal";
             this.chkModal.UseVisualStyleBackColor = true;
             this.chkModal.CheckedChanged += new System.EventHandler(this.chkModal_CheckedChanged);

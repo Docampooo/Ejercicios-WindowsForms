@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Ejercicio4
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form//TODO label indices seleecionados. Seleccion multiple lista 1. Tooltip secundaria. Scroll titulo
     {
         public Form1()
         {
@@ -23,10 +23,11 @@ namespace Ejercicio4
             lblLista.Text = $"Seleccion lista 1 | indice";
             Text = "";
 
+            lst1.SelectionMode = SelectionMode.MultiSimple;
+
             toolTip.SetToolTip(this.lst2, "No hay elementos en la lista");
 
             tmrTitulo.Start();
-
         }
 
         public void actualizarLabel()
@@ -36,11 +37,18 @@ namespace Ejercicio4
             {
                 if (lst1.GetSelected(i) == true)
                 {
-                    lblLista.Text = $"{lblElementos.Text}\n{lst1.Items[i].ToString(),20}|{lst1.Items.IndexOf(lst1.Items[i])}";
+                    lblLista.Text = $"{lblElementos.Text}{Environment.NewLine}{lst1.Items[i].ToString(),20}|{lst1.Items.IndexOf(lst1.Items[i])}";
                 }
             }
 
-            toolTip.SetToolTip(this.lst2, $"Elementos de la lista 2: {lst2.Items.Count}");
+            if (lst2.Items.Count == 0)
+            {
+                toolTip.SetToolTip(this.lst2, "No hay elementos en la lista");
+            }
+            else
+            {
+                toolTip.SetToolTip(this.lst2, $"Elementos de la lista 2: {lst2.Items.Count}");
+            }
         }
 
         private void btnAñadir_Click(object sender, EventArgs e)
@@ -115,11 +123,14 @@ namespace Ejercicio4
             if (rbLst1.Checked)
             {
                 btnQuitar.Text = "Quitar de 1";
+                btnAñadir.Text = "Añadir a 1";
             }
 
             if (rbLst2.Checked)
             {
                 btnQuitar.Text = "Quitar de 2";
+                btnAñadir.Text = "Añadir a 2";
+
             }
         }
 

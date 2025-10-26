@@ -41,7 +41,7 @@
             this.btn1.TabIndex = 0;
             this.btn1.Text = "Izquierdo";
             this.btn1.UseVisualStyleBackColor = true;
-            this.btn1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseTester_MouseMove);
+            this.btn1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ratonEnBoton);
             // 
             // btn2
             // 
@@ -51,7 +51,7 @@
             this.btn2.TabIndex = 1;
             this.btn2.Text = "Derecho";
             this.btn2.UseVisualStyleBackColor = true;
-            this.btn2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MouseTester_MouseMove);
+            this.btn2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ratonEnBoton);
             // 
             // MouseTester
             // 
