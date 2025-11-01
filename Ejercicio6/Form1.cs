@@ -14,11 +14,65 @@ namespace Ejercicio6
 {
     public partial class Ejercicio6 : Form
     {
+
         public Ejercicio6()
         {
             InitializeComponent();
             this.KeyPreview = true;
-            this.CancelButton = 
+
+            btnAvance.Enabled = false;
+            btnRetroceso.Enabled = false;
+        }
+        internal class Propiedades
+        {
+            private string imagen;
+            public string Imagen { set; get; }
+
+            private string titulo;
+            public string Titulo { set; get; }
+
+            private long tamaño;
+            public long Tamaño { set; get; }
+
+            public Propiedades()
+            {
+                Imagen = "";
+                Titulo = "";
+                Tamaño = 0;
+            }
+
+            public Propiedades(string imagen, string titulo, long tamaño)
+            {
+                Imagen = imagen;
+                Titulo = titulo;
+                Tamaño = tamaño;
+            }
+        }
+
+        public bool confirmarImagen(string ruta)
+        {
+            try
+            {
+                using (Image img = Image.FromFile(ruta))
+                {
+                    return true;
+                }
+
+            }
+            catch (ArgumentException ag)
+            {
+                return false;
+
+            }
+            catch (FileNotFoundException fn)
+            {
+                return false;
+
+            }
+            catch (OutOfMemoryException ofe)
+            {
+                return false;
+            }
         }
 
         DialogResult res;
@@ -32,10 +86,8 @@ namespace Ejercicio6
         int y = 0;
 
         int cont = -1;
-        List<string> imagenes = new List<string>();
-        List<string> titulos = new List<string>();
-        List<long> tamaños = new List<long>();
 
+        List<Propiedades> propiedades = new List<Propiedades>(); // --> Coleccion de las imagenes contenidas en las listas
 
         private void btnAbrir_Click(object sender, EventArgs e)
         {
@@ -49,6 +101,9 @@ namespace Ejercicio6
                 if (res == DialogResult.OK)
                 {
 
+                    propiedades.Clear();
+                    pnImagenes.Controls.Clear();
+
                     rutaSeleccionada = fb.SelectedPath;
 
                     DirectoryInfo dir = new DirectoryInfo(rutaSeleccionada);
@@ -57,12 +112,16 @@ namespace Ejercicio6
                     {
 
                         string ext = fi.Extension.ToLower();
-                        if (ext == ".jpg" || ext == ".png" || ext == ".jpeg")
+                        if ((ext == ".jpg" || ext == ".png" || ext == ".jpeg" || ext == ".bmp" || ext == ".gif") && confirmarImagen(fi.FullName)) //Corregir esta condicion para imagenes corruptas
                         {
                             cont++;
-                            imagenes.Add(fi.FullName); //ruta imagen
-                            titulos.Add(fi.Name); //nombre y extension imagen
-                            tamaños.Add((long)fi.Length / 1024); //tamaño en KB
+                            /**
+                             * 1 ruta imagen
+                             * 2 nombre y extension
+                             * 3 tamaño en KB
+                             */
+                            Propiedades prop = new Propiedades(fi.FullName, fi.Name, (long)fi.Length / 1024);
+                            propiedades.Add(prop);
 
                             if (cont == 0)
                             {
@@ -70,7 +129,7 @@ namespace Ejercicio6
                                 pbImagen.SizeMode = PictureBoxSizeMode.AutoSize;
                                 pbImagen.Tag = cont;
 
-                                this.Text = "Visor de imagenes " + titulos[cont];
+                                this.Text = "Visor de imagenes " + prop.Titulo;
                             }
 
                             PictureBox pi = new PictureBox(); //--> añadir el autosize y que se vean todas las imagenes
@@ -102,6 +161,12 @@ namespace Ejercicio6
 
                         }
                     }
+
+                    if (propiedades.Count > 0)
+                    {
+                        btnAvance.Enabled = true;
+                        btnRetroceso.Enabled = true;
+                    }
                 }
                 else
                 {
@@ -113,7 +178,7 @@ namespace Ejercicio6
         string imagen = "";
         private void btnAvance_Click(object sender, EventArgs e)
         {
-            if ((int)pbImagen.Tag == imagenes.Count - 1)
+            if ((int)pbImagen.Tag == propiedades.Count - 1)
             {
                 pbImagen.Tag = 0;
             }
@@ -122,11 +187,11 @@ namespace Ejercicio6
                 pbImagen.Tag = ((int)pbImagen.Tag + 1);
 
             }
-            imagen = imagenes[(int)pbImagen.Tag];
+            imagen = propiedades[(int)pbImagen.Tag].Imagen;
 
 
-            this.Text = "Visor de imagenes " + titulos[(int)pbImagen.Tag];
-            lblImagen.Text = $"Nombre: {titulos[(int)pbImagen.Tag]}, Tamaño en KB: {tamaños[(int)pbImagen.Tag]}, Resolucion: {pbImagen.Width}:{pbImagen.Height}";
+            this.Text = "Visor de imagenes " + propiedades[(int)pbImagen.Tag].Titulo;
+            lblImagen.Text = $"Nombre: {propiedades[(int)pbImagen.Tag].Titulo}, Tamaño en KB: {propiedades[(int)pbImagen.Tag].Tamaño}, Resolucion: {pbImagen.Width}:{pbImagen.Height}";
             lblDirectorio.Text = rutaSeleccionada;
 
             pbImagen.Image = new Bitmap(imagen);
@@ -137,20 +202,20 @@ namespace Ejercicio6
         {
             if ((int)pbImagen.Tag == 0)
             {
-                pbImagen.Tag = imagenes.Count - 1;
+                pbImagen.Tag = propiedades.Count - 1;
             }
             else
             {
                 pbImagen.Tag = ((int)pbImagen.Tag - 1);
 
             }
-            imagen = imagenes[(int)pbImagen.Tag];
+            imagen = propiedades[(int)pbImagen.Tag].Imagen;
 
-            this.Text = "Visor de imagenes " + titulos[(int)pbImagen.Tag];
-            lblImagen.Text = $"Nombre: {titulos[(int)pbImagen.Tag]}, Tamaño en KB: {tamaños[(int)pbImagen.Tag]}, Resolucion: {pbImagen.Width}:{pbImagen.Height}";
+            this.Text = "Visor de imagenes " + propiedades[(int)pbImagen.Tag].Titulo;
+            lblImagen.Text = $"Nombre: {propiedades[(int)pbImagen.Tag].Titulo}, Tamaño en KB: {propiedades[(int)pbImagen.Tag].Tamaño}, Resolucion: {pbImagen.Width}:{pbImagen.Height}";
             lblDirectorio.Text = rutaSeleccionada;
 
-            pbImagen.Image = new Bitmap(imagen);
+            pbImagen.Image = new Bitmap(propiedades[(int)pbImagen.Tag].Imagen);
 
         }
 
@@ -173,7 +238,10 @@ namespace Ejercicio6
 
             pbImagen.Tag = (int)pic.Tag;
 
-            pbImagen.Image = new Bitmap(imagenes[(int)pbImagen.Tag]);
+            lblImagen.Text = $"Nombre: {propiedades[(int)pbImagen.Tag].Titulo}, Tamaño en KB: {propiedades[(int)pbImagen.Tag].Tamaño}, Resolucion: {pbImagen.Width}:{pbImagen.Height}";
+            lblDirectorio.Text = rutaSeleccionada;
+
+            pbImagen.Image = new Bitmap(propiedades[(int)pbImagen.Tag].Imagen);
         }
 
         private void Ejercicio6_FormClosing(object sender, FormClosingEventArgs e)
